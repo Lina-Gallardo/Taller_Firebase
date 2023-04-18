@@ -104,6 +104,7 @@ const Formulario = () => {
             )
             setListaClientes(nuevoArray)
             limpiar()
+            setModoEdicion(false)
         } catch (error) {
             console.log(error)
         }
@@ -121,19 +122,19 @@ const Formulario = () => {
             <div className="col-4">
                 <h4 className="text-center">{ModoEdicion? 'Editar Cliente':'Agregar Clientes'}</h4>
                 <form onSubmit={ModoEdicion ? editarCliente:guardar} id='FormClientes'> 
-                    <select value={TipDocument} onChange={(e)=>setTipDocument(e.target.value)} className="form-select mb-4" name="Document" id={TipDocument}>
+                    <select required value={TipDocument} onChange={(e)=>setTipDocument(e.target.value)} className="form-select mb-4" name="Document" id={TipDocument}>
                         <option value={TipDocument} defaultChecked>{TipDocument? TipDocument: 'Seleccione el tipo de document'}</option>
                         <option value="Cedula de ciudadanía">Cedula de ciudadanía</option>
                         <option value="Tarjeta de identidad">Tarjeta de identidad</option>
                         <option value="Pasaporte">Pasaporte</option>
                         <option value="Cedula de extranjería">Cedula de extranjería</option>
                     </select>
-                    <input onChange={(e)=>setDocument(e.target.value)} value={Document} type="number" className="form-control mb-4" placeholder="Documento de Identidad" />
-                    <input onChange={(e)=>setNombre(e.target.value)} value={Nombre} type="text" className="form-control mb-4" placeholder="Nombre" />
-                    <input onChange={(e)=>setApellido(e.target.value)} value={Apellido} type="text" className="form-control mb-4" placeholder="Apellido" />
-                    <input onChange={(e)=>setTelefono(e.target.value)} value={Telefono} type="number" lim className="form-control mb-4" placeholder="Teléfono" />
-                    <input onChange={(e)=>setDireccion(e.target.value)} value={Direccion} type="text" className="form-control mb-4" placeholder="Dirección" />
-                    <input onChange={(e)=>setEmail(e.target.value)} value={Email} type="email" className="form-control mb-4" placeholder="Correo Electrónico" />
+                    <input required onChange={(e)=>setDocument(e.target.value)} value={Document} type="number" className="form-control mb-4" placeholder="Documento de Identidad" />
+                    <input required onChange={(e)=>setNombre(e.target.value)} value={Nombre} type="text" className="form-control mb-4" placeholder="Nombre" />
+                    <input required onChange={(e)=>setApellido(e.target.value)} value={Apellido} type="text" className="form-control mb-4" placeholder="Apellido" />
+                    <input required onChange={(e)=>setTelefono(e.target.value)} value={Telefono} type="number" lim className="form-control mb-4" placeholder="Teléfono" />
+                    <input required onChange={(e)=>setDireccion(e.target.value)} value={Direccion} type="text" className="form-control mb-4" placeholder="Dirección" />
+                    <input required onChange={(e)=>setEmail(e.target.value)} value={Email} type="email" className="form-control mb-4" placeholder="Correo Electrónico" />
                     <div className='pb-4'>
                         {
                             ModoEdicion? 
