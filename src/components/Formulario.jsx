@@ -119,7 +119,7 @@ const Formulario = () => {
         <h1 className="text-center">Formulario</h1>
         <hr/>
         <div className="row">
-            <div className="col-sm-12 col-xs-12 col-md-3 col-lg-3 col-3">
+            <div className="col-sm-12 col-xs-12 col-md-3 col-lg-3 col-3 h-100 p-5 bg-body-tertiary border rounded-3">
                 <h4 className="text-center">{ModoEdicion? 'Editar Cliente':'Agregar Clientes'}</h4>
                 <form onSubmit={ModoEdicion ? editarCliente:guardar} id='FormClientes'> 
                     <select required value={TipDocument} onChange={(e)=>setTipDocument(e.target.value)} className="form-select mb-4" name="Document" id={TipDocument}>
