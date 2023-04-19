@@ -119,11 +119,11 @@ const Formulario = () => {
         <h1 className="text-center">Formulario</h1>
         <hr/>
         <div className="row">
-            <div className="col-4">
+            <div className="col-sm-12 col-xs-12 col-md-3 col-lg-3 col-3">
                 <h4 className="text-center">{ModoEdicion? 'Editar Cliente':'Agregar Clientes'}</h4>
                 <form onSubmit={ModoEdicion ? editarCliente:guardar} id='FormClientes'> 
                     <select required value={TipDocument} onChange={(e)=>setTipDocument(e.target.value)} className="form-select mb-4" name="Document" id={TipDocument}>
-                        <option value={TipDocument} defaultChecked>{TipDocument? TipDocument: 'Seleccione el tipo de document'}</option>
+                        <option value={TipDocument} defaultChecked>{TipDocument? TipDocument: 'Tipo de document'}</option>
                         <option value="Cedula de ciudadanía">Cedula de ciudadanía</option>
                         <option value="Tarjeta de identidad">Tarjeta de identidad</option>
                         <option value="Pasaporte">Pasaporte</option>
@@ -153,20 +153,34 @@ const Formulario = () => {
                     </div>
                 </form>
             </div>
-            <div className="col-8" >
+            <div className="col-9">
                 <h4 className="text-center" >Listado de Clientes</h4>
-                <ul className="list-group">
+                <table className="table-responsive">
+                    <tr>
+                        <th>Photo</th>
+                        <th>Tipo de Documento</th>
+                        <th>Documento</th>
+                        <th>Nombre Completo</th>
+                        <th>Teléfono</th>
+                        <th>Correo</th>
+                    </tr>
                     {
                         ListaClientes.map(item=>(
-                            <li className="list-group-item" key={item.id}>
-                                <span className='lead'>Documento: {item.Document} Nombre: {item.Nombre} {item.Apellido}</span>
-                                <button className='btn btn-warning btn-sn fload-end mx-2' onClick={()=>editar(item)}>Editar</button>
-                                <button className='btn btn-danger btn-sn fload-end mx-2' onClick={()=>eliminar(item.id)}>Eliminar</button>
-                            </li>
-                        ))
+                            <tr>
+                                <td><img src="https://picsum.photos/60/30?random" alt="" /></td>
+                                <td>{item.Tipo}</td>
+                                <td>{item.Document}</td>
+                                <td>{item.Nombre} {item.Apellido}</td>
+                                <td>{item.Tel}</td>
+                                <td>{item.Email}</td>
+                                <td>
+                                    <button className='btn btn-warning' onClick={()=>editar(item)}>Editar</button>
+                                    <button className='btn btn-danger' onClick={()=>eliminar(item.id)}>Eliminar</button>
+                                </td>
+                            </tr>
+                        ))                      
                     }
-                    
-                </ul>
+                </table>
             </div>
         </div>
     </div>
